@@ -1,10 +1,16 @@
 import { createMiddleware } from "@tanstack/react-start";
-import { getWebRequest } from "vinxi/http";
+import { getLocale, Locale, overwriteGetLocale, setLocale as baseSetLocale } from "~/paraglide/runtime.js";
 
-import { paraglideMiddleware } from "~/paraglide/server.js";
+export let inMemoryLocale: Locale | undefined;
 
-export const localeMiddleware = createMiddleware().server((context) =>
-  paraglideMiddleware(getWebRequest(), ({ request, locale }) =>
-    context.next({ context: { locale, request } }),
-  ),
-);
+export function setLocale(locale: Locale) {
+  baseSetLocale(locale)
+  inMemoryLocale = locale;
+}
+
+export const localeMiddleware = createMiddleware()
+  .client((context) => context.next({ sendContext: { locale: inMemoryLocale ?? getLocale() } }))
+  .server((context) => {
+    overwriteGetLocale(() => context.context.locale);
+    return context.next();
+  });
