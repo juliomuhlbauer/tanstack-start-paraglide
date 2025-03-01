@@ -2,14 +2,16 @@ import { createFileRoute } from "@tanstack/react-router";
 import { m } from "~/paraglide/messages.js";
 import { locales, setLocale } from "~/paraglide/runtime";
 
-export const Route = createFileRoute("/$lang/")({
+export const Route = createFileRoute("/")({
   component: Home,
 });
 
 function Home() {
   return (
     <div className="p-2">
-      <h3>{m.example_message({ username: "John Doe" })}</h3>
+      <h3 className={"text-red-500"}>
+        {m.example_message({ username: "John Doe" })}
+      </h3>
       {locales.map((locale) => (
         <button
           onClick={() => setLocale(locale)}

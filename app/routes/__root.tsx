@@ -11,15 +11,9 @@ import { DefaultCatchBoundary } from "~/components/DefaultCatchBoundary";
 import { NotFound } from "~/components/NotFound";
 import { getLocale } from "~/paraglide/runtime";
 import appCss from "~/styles/app.css?url";
-import { redirectNoLocale } from "~/utils/redirect-no-locale";
 import { seo } from "~/utils/seo";
 
 export const Route = createRootRoute({
-  loader: (ctx) => {
-    // Use this only if you're using the url strategy method in paraglide
-    // baseLocale strategy needs to be enabled in paraglide config
-    redirectNoLocale(ctx);
-  },
   head: () => ({
     meta: [
       {
@@ -86,8 +80,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <body>
         <div className="p-2 flex gap-2 text-lg">
           <Link
-            to="/$lang"
-            params={{ lang: getLocale() }}
+            to="/"
             activeProps={{
               className: "font-bold",
             }}

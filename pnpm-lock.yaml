@@ -33,6 +33,9 @@ importers:
         specifier: 0.5.3
         version: 0.5.3(@types/node@22.13.8)(db0@0.2.4)(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.39.0)(tsx@4.19.3)(typescript@5.8.2)(yaml@2.7.0)
     devDependencies:
+      '@inlang/cli':
+        specifier: ^3.0.0
+        version: 3.0.3
       '@inlang/paraglide-js':
         specifier: 2.0.0-beta.26
         version: 2.0.0-beta.26
@@ -613,6 +616,11 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@inlang/cli@3.0.3':
+    resolution: {integrity: sha512-2EEYjlOjlJdfvDpk15Gjr5Y+ALE6qX2vruXO6yUnIhrmviuQwHMvdqpFz8NdPtpvG58eTgctju71gTiVt6c5AA==}
+    engines: {node: '>=18.0.0'}
+    hasBin: true
 
   '@inlang/paraglide-js@2.0.0-beta.26':
     resolution: {integrity: sha512-D7WGs9j1beK32xrEDQ9GY/+QqBrqaakwLqUZCZ3r0wJVVk6j5PjEODxjJrlWTrs/33tQWGA/YK5d3MUkksCDNQ==}
@@ -1654,6 +1662,11 @@ packages:
 
   es-module-lexer@1.6.0:
     resolution: {integrity: sha512-qqnD1yMU6tk/jnaMosogGySTZP8YtUgAffA9nMN+E/rjxcfRQ6IEk7IiozUjgxKoFHBGjTLnrHB/YC45r/59EQ==}
+
+  esbuild-wasm@0.19.12:
+    resolution: {integrity: sha512-Zmc4hk6FibJZBcTx5/8K/4jT3/oG1vkGTEeKJUQFCUQKimD6Q7+adp/bdVQyYJFolMKaXkQnVZdV4O5ZaTYmyQ==}
+    engines: {node: '>=12'}
+    hasBin: true
 
   esbuild@0.20.2:
     resolution: {integrity: sha512-WdOOppmUNU+IbZ0PaDiTst80zjnrOkyJNHoKupIcVyU8Lvla3Ugx94VzkQ32Ijqd7UhHJy75gNWDMUekcrSJ6g==}
@@ -3374,6 +3387,13 @@ snapshots:
   '@esbuild/win32-x64@0.25.0':
     optional: true
 
+  '@inlang/cli@3.0.3':
+    dependencies:
+      '@inlang/sdk': 2.4.1
+      esbuild-wasm: 0.19.12
+    transitivePeerDependencies:
+      - babel-plugin-macros
+
   '@inlang/paraglide-js@2.0.0-beta.26':
     dependencies:
       '@inlang/recommend-sherlock': 0.2.1
@@ -4918,6 +4938,8 @@ snapshots:
       tapable: 2.2.1
 
   es-module-lexer@1.6.0: {}
+
+  esbuild-wasm@0.19.12: {}
 
   esbuild@0.20.2:
     optionalDependencies:

@@ -11,13 +11,13 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as LangIndexImport } from './routes/$lang/index'
+import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
 
-const LangIndexRoute = LangIndexImport.update({
-  id: '/$lang/',
-  path: '/$lang/',
+const IndexRoute = IndexImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -25,11 +25,11 @@ const LangIndexRoute = LangIndexImport.update({
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/$lang/': {
-      id: '/$lang/'
-      path: '/$lang'
-      fullPath: '/$lang'
-      preLoaderRoute: typeof LangIndexImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -38,33 +38,33 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export interface FileRoutesByFullPath {
-  '/$lang': typeof LangIndexRoute
+  '/': typeof IndexRoute
 }
 
 export interface FileRoutesByTo {
-  '/$lang': typeof LangIndexRoute
+  '/': typeof IndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
-  '/$lang/': typeof LangIndexRoute
+  '/': typeof IndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/$lang'
+  fullPaths: '/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/$lang'
-  id: '__root__' | '/$lang/'
+  to: '/'
+  id: '__root__' | '/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  LangIndexRoute: typeof LangIndexRoute
+  IndexRoute: typeof IndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  LangIndexRoute: LangIndexRoute,
+  IndexRoute: IndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -77,11 +77,11 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/$lang/"
+        "/"
       ]
     },
-    "/$lang/": {
-      "filePath": "$lang/index.tsx"
+    "/": {
+      "filePath": "index.tsx"
     }
   }
 }
