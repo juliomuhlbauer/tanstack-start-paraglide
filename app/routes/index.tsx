@@ -9,9 +9,7 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <div className="p-2">
-      <h3 className={"text-red-500"}>
-        {m.example_message({ username: "John Doe" })}
-      </h3>
+      <h3>{m.example_message({ username: "John Doe" })}</h3>
       {locales.map((locale) => (
         <button
           onClick={() => setLocale(locale)}
