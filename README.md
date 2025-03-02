@@ -36,6 +36,9 @@ declare module "@tanstack/react-router" {
 
 ```
 
+`paraglideMiddleware()` does not work well with API routes if you use the `url` strategy. If you want to use Paraglide with API routes, but you use the `url` for your project, and you encounter issues, either setup a separate Paraglide project for your API routes without the `url` strategy, and change the import path in the `/app/api.ts` file, or implement a custom strategy.
+
+
 ## How it's implemented?
 
 The `paraglideMiddleware()` from the `/app/paraglide/server.js` in `/app/ssr.tsx` and the middleware has to stay there to make sure the package works. The same middleware is also used in `/app/api.ts` so you can use the package with API routes, although it's completely optional, so feel free to remove it if you don't need it. **The `url` strategy DOES NOT work with API routes.**
