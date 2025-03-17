@@ -1,9 +1,12 @@
 import { createMiddleware } from "@tanstack/react-start";
-import { getLocale, overwriteGetLocale } from "~/paraglide/runtime.js";
+import { AsyncLocalStorage } from 'node:async_hooks'
+import { baseLocale, getLocale, Locale, overwriteGetLocale } from "~/paraglide/runtime.js";
 
 export const localeMiddleware = createMiddleware()
-  .client((context) => context.next({ sendContext: { locale: getLocale() } }))
-  .server((context) => {
-    overwriteGetLocale(() => context.context.locale);
-    return context.next();
+  .client((context) => {
+    return context.next({ sendContext: { locale: getLocale() } }) })
+  .server(async (context) => {
+    const storage = new AsyncLocalStorage<Locale>()
+    overwriteGetLocale(() => storage.getStore() ?? baseLocale)
+    return await storage.run(context.context.locale, async () => await context.next())
   });
