@@ -1,9 +1,9 @@
-import { defineConfig } from "@tanstack/react-start/config";
+import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import tsConfigPaths from "vite-tsconfig-paths";
 import { paraglideVitePlugin as paraglide } from "@inlang/paraglide-js";
+import { defineConfig } from 'vite'
 
 export default defineConfig({
-  vite: {
     plugins: [
       tsConfigPaths({
         projects: ["./tsconfig.json"],
@@ -15,6 +15,6 @@ export default defineConfig({
         cookieName: "PARAGLIDE_LOCALE",
         strategy: ["cookie", "url", "preferredLanguage", "baseLocale"],
       }),
+      tanstackStart(),
     ],
-  },
 });
