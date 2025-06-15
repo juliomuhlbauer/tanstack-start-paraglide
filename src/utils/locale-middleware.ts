@@ -7,7 +7,7 @@ import {
 } from "~/paraglide/runtime.js";
 import { resolveLocale } from "./resolve-locale";
 
-export const localeMiddleware = createMiddleware()
+export const localeMiddleware = createMiddleware({ type: 'function' })
   .client(async (context) =>
     context.next({
       sendContext: {
