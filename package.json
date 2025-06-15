@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "paraglide-js compile --project ./project.inlang --outdir ./app/paraglide && vite build",
-    "start": "vite start",
+    "start": "node .output/server/index.mjs",
     "machine-translate": "inlang machine translate --project project.inlang",
     "test:types": "tsc --noEmit"
   },
