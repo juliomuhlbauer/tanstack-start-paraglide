@@ -10,7 +10,7 @@ export default defineConfig({
       }),
       paraglide({
         project: "./project.inlang",
-        outdir: "./app/paraglide",
+        outdir: "./src/paraglide",
         outputStructure: "message-modules",
         cookieName: "PARAGLIDE_LOCALE",
         strategy: ["cookie", "url", "preferredLanguage", "baseLocale"],
