@@ -1,6 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { m } from "~/paraglide/messages.js";
-import { localeMiddleware } from '~/utils/locale-middleware'
+import { localeMiddleware } from "~/utils/locale-middleware";
 
 export const getServerMessage = createServerFn()
   .middleware([localeMiddleware])
