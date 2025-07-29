@@ -1,13 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { m } from "~/paraglide/messages.js";
-import { locales, setLocale } from "~/paraglide/runtime.js";
+import { baseLocale, locales, setLocale } from "~/paraglide/runtime.js";
 import { getServerMessage } from "~/serverFunctions/get-server-message";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/{-$locale}/")({
   component: Home,
-  loader: () => {
-    return getServerMessage({ data: "📩" });
-  },
+  loader: () => getServerMessage({ data: "📩" }),
 });
 
 function Home() {

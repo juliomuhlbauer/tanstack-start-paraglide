@@ -13,7 +13,16 @@ export default defineConfig({
       outdir: "./src/paraglide",
       outputStructure: "message-modules",
       cookieName: "PARAGLIDE_LOCALE",
-      strategy: ["cookie", "url", "preferredLanguage", "baseLocale"],
+      strategy: ["url", "cookie", "preferredLanguage", "baseLocale"],
+      urlPatterns: [
+        {
+          pattern: "/:path(.*)?",
+          localized: [
+            ["en", "/en/:path(.*)?"],
+            ["de", "/de/:path(.*)?"],
+          ],
+        },
+      ],
     }),
     tanstackStart(),
   ],

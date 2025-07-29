@@ -8,13 +8,13 @@ import {
 import { resolveLocale } from "./resolve-locale";
 
 export const localeMiddleware = createMiddleware({ type: "function" })
-  .client(async (context) =>
-    context.next({
+  .client(async (context) => {
+    return context.next({
       sendContext: {
         locale: await resolveLocale(),
       },
-    }),
-  )
+    });
+  })
   .server((context) => {
     const storage = new AsyncLocalStorage<Locale>();
     overwriteGetLocale(() => storage.getStore() ?? baseLocale);

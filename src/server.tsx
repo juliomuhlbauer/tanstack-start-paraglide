@@ -4,12 +4,12 @@ import {
   getWebRequest,
 } from "@tanstack/react-start/server";
 
-import { createRouter } from "./router";
 import { paraglideMiddleware } from "./paraglide/server.js";
 import { overwriteGetLocale } from "./paraglide/runtime.js";
+import { router } from "./router";
 
 export default createStartHandler({
-  createRouter: () => createRouter(getWebRequest().url),
+  createRouter: () => router,
 })((event) =>
   paraglideMiddleware(getWebRequest(), ({ locale }) => {
     overwriteGetLocale(() => locale);
