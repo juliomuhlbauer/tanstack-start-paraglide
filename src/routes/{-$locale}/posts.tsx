@@ -3,7 +3,7 @@ import { m } from "~/paraglide/messages.js";
 import { getLocale, locales, setLocale } from "~/paraglide/runtime.js";
 import { getServerMessage } from "~/serverFunctions/get-server-message";
 
-export const Route = createFileRoute("/posts")({
+export const Route = createFileRoute("/{-$locale}/posts")({
   component: Home,
   loader: () => {
     const allPosts = [
