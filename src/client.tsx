@@ -1,13 +1,11 @@
 import { hydrateRoot } from "react-dom/client";
 import { StartClient } from "@tanstack/react-start";
-import { createRouter } from "./router";
+import { router } from "./router";
 import {
   getLocale,
   overwriteGetLocale,
   strategy,
 } from "./paraglide/runtime.js";
-
-const router = createRouter(window.location.pathname);
 
 /**
  * BEGINING

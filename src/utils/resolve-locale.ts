@@ -4,7 +4,7 @@ import {
   baseLocale,
   getLocale,
   Locale,
-  extractLocaleFromRequestAsync,
+  extractLocaleFromRequest,
 } from "~/paraglide/runtime.js";
 
 import { paraglideMiddleware } from "~/paraglide/server.js";
@@ -23,6 +23,6 @@ export const resolveLocale = createIsomorphicFn()
         resolve(locale);
       });
 
-      resolve(await extractLocaleFromRequestAsync(request));
+      resolve(extractLocaleFromRequest(request));
     });
   });
