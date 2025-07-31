@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { m } from "~/paraglide/messages.js";
 import { locales, setLocale } from "~/paraglide/runtime.js";
 import { getServerMessage } from "~/serverFunctions/get-server-message";
@@ -25,6 +25,8 @@ function Home() {
           {locale}
         </button>
       ))}
+
+      <Link to="/{-$locale}/posts">Go to posts</Link>
     </div>
   );
 }
