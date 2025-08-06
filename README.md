@@ -4,13 +4,13 @@ This repository is a template for starting projects with TanStack Start using Pa
 
 ## How it's implemented?
 
-The `paraglideMiddleware()` from the `/app/paraglide/server.js` in `/app/ssr.tsx` and the middleware has to stay there to make sure the package works. The same middleware is also used in `/app/api.ts` so you can use the package with API routes, although it's completely optional, so feel free to remove it if you don't need it. **The `url` strategy DOES NOT work with API routes.**
+The `paraglideMiddleware()` from the `/src/paraglide/server.js` in `/src/server.tsx` and the middleware has to stay there to make sure the package works. The same middleware is also used in `/app/api.ts` so you can use the package with API routes, although it's completely optional, so feel free to remove it if you don't need it. **The `url` strategy DOES NOT work with API routes.**
 
-By default, the `localeMiddleware()` is enabled in `/app/global-middleware.ts`. What it does is it passes information about used language from the client to all server functions. If you don't use Paraglide with server functions, feel free to remove it.
+By default, the `localeMiddleware()` is enabled in `/src/global-middleware.ts`. What it does is it passes information about used language from the client to all server functions. If you don't use Paraglide with server functions, feel free to remove it.
 
 ## Link component
 
-You can use the `Link` component provided by TanStack Router as it is. No changes are required. If you use the `url` strategy, you can use the `localizeHref()` function provided in `/app/paraglide/runtime.js` with the `Link` component or `setLocale()` no matter what strategy you're using.
+You can use the `Link` component provided by TanStack Router as it is. No changes are required. If you use the `url` strategy, you can use the `localizeHref()` function provided in `/src/paraglide/runtime.js` with the `Link` component or `setLocale()` no matter what strategy you're using.
 
 ## Development
 
