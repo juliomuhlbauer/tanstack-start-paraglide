@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { m } from "~/paraglide/messages.js";
 import { getLocale, locales, setLocale } from "~/paraglide/runtime.js";
 import { getServerMessage } from "~/serverFunctions/get-server-message";
@@ -24,15 +24,13 @@ function Home() {
       <h2>Server function message: {serverFunctionMessage}:</h2>
       <h3>{m.example_message({ username: "John Doe" })}</h3>
       <h2>Locale from client: {getLocale()}</h2>
-      {locales.map((locale) => (
-        <button
-          onClick={() => setLocale(locale)}
-          key={locale}
-          className={`px-2 py-1 bg-gray-600 dark:bg-gray-700 rounded-sm text-white uppercase font-extrabold m-2`}
-        >
-          {locale}
-        </button>
-      ))}
+
+      <Link
+        to="/{-$locale}/about"
+        className="px-2 py-1 bg-gray-600 dark:bg-gray-700 rounded-sm text-white uppercase font-extrabold m-2"
+      >
+        About page
+      </Link>
     </div>
   );
 }
