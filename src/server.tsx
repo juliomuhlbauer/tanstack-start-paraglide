@@ -10,13 +10,10 @@ import { router } from "./router";
 
 export default createStartHandler({
   createRouter: () => router,
-})((event) =>
-  paraglideMiddleware(getWebRequest(), ({ locale, request }) => {
+})((event) => {
+  return paraglideMiddleware(getWebRequest(), ({ locale, request }) => {
     overwriteGetLocale(() => locale);
-    return defaultStreamHandler({
-      request: request,
-      router: event.router,
-      responseHeaders: event.responseHeaders,
-    });
-  })
-);
+
+    return defaultStreamHandler({ ...event, request });
+  });
+});
