@@ -23,6 +23,13 @@ export default defineConfig({
           ],
         },
         {
+          pattern: "/{-$locale}/about",
+          localized: [
+            ["en", "/en/about"],
+            ["de", "/de/about"],
+          ],
+        },
+        {
           pattern: "/:path(.*)?",
           localized: [
             ["en", "/en/:path(.*)?"],
