@@ -1,11 +1,9 @@
 import {
   createStartHandler,
   defaultStreamHandler,
-  getWebRequest,
 } from "@tanstack/react-start/server";
 
 import { paraglideMiddleware } from "./paraglide/server.js";
-import { overwriteGetLocale } from "./paraglide/runtime.js";
 import { router } from "./router";
 
 const startHandler = createStartHandler({
@@ -13,10 +11,10 @@ const startHandler = createStartHandler({
 })(defaultStreamHandler);
 
 export default ({ request }: { request: Request }) => {
-  console.log("Server handler called", new Date());
-  console.log("Request URL:", request.url);
-  return paraglideMiddleware(request, ({ locale, request }) => {
-    overwriteGetLocale(() => locale);
+  console.log("[Original] Request URL:", request.url);
+
+  return paraglideMiddleware(request, ({ request }) => {
+    console.log("[Modified] Request URL", request.url);
 
     return startHandler({ request });
   });

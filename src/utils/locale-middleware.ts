@@ -11,32 +11,26 @@ import { resolveLocale } from "./resolve-locale";
 import { paraglideMiddleware } from "~/paraglide/server";
 import { getWebRequest } from "@tanstack/react-start/server";
 
-export const localeMiddleware = createMiddleware({ type: "function" })
-  .client(async ({ router, next }) => {
-    const standardLocale = await resolveLocale();
+// export const localeMiddleware = createMiddleware({ type: "function" })
+//   .client(async ({ router, next }) => {
+//     const standardLocale = await resolveLocale();
 
-    const locale =
-      extractLocaleFromStrategies(router.latestLocation.href) ?? standardLocale;
+//     const locale =
+//       extractLocaleFromStrategies(router.latestLocation.href) ?? standardLocale;
 
-    console.log("client", locale);
+//     console.log("client", locale);
 
-    return next({
-      sendContext: {
-        locale,
-      },
-    });
-  })
-  .server(async ({ context: { locale }, next, response }) => {
-    overwriteGetLocale(() => locale);
+//     return next({
+//       sendContext: {
+//         locale,
+//       },
+//     });
+//   })
+//   .server(async ({ context: { locale }, next, response }) => {
+//     overwriteGetLocale(() => locale);
 
-    const Response = await paraglideMiddleware(getWebRequest(), async () => {
-      return response;
-    });
-
-    console.log(Response);
-
-    return await next();
-  });
+//     return await next();
+//   });
 
 function extractLocaleFromStrategies(url: string): Locale | undefined {
   for (const strategy of strategies) {

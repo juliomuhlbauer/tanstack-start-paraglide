@@ -15,6 +15,13 @@ export default defineConfig({
       cookieName: "PARAGLIDE_LOCALE",
       strategy: ["cookie", "url", "preferredLanguage", "baseLocale"],
       urlPatterns: [
+        // {
+        //   pattern: "/about",
+        //   localized: [
+        //     ["en", "/en/about"],
+        //     ["de", "/de/ueber"],
+        //   ],
+        // },
         {
           pattern: "/{-$locale}/about",
           localized: [
