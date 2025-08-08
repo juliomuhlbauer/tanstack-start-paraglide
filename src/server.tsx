@@ -4,10 +4,10 @@ import {
 } from "@tanstack/react-start/server";
 
 import { paraglideMiddleware } from "./paraglide/server.js";
-import { router } from "./router";
+import { createRouter } from "./router";
 
 const startHandler = createStartHandler({
-  createRouter: () => router,
+  createRouter,
 })(defaultStreamHandler);
 
 export default ({ request }: { request: Request }) => {
