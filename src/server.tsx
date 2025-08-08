@@ -11,10 +11,10 @@ const startHandler = createStartHandler({
 })(defaultStreamHandler);
 
 export default ({ request }: { request: Request }) => {
-  console.log("[Original] Request URL:", request.url);
+  // console.log("[Original] Request URL:", request.url);
 
   return paraglideMiddleware(request, ({ request }) => {
-    console.log("[Modified] Request URL", request.url);
+    // console.log("[Modified] Request URL", request.url);
 
     return startHandler({ request });
   });

@@ -9,7 +9,7 @@ import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import * as React from "react";
 import { DefaultCatchBoundary } from "~/components/DefaultCatchBoundary";
 import { NotFound } from "~/components/NotFound";
-import { getLocale } from "~/paraglide/runtime.js";
+import { getLocale, locales, setLocale } from "~/paraglide/runtime.js";
 import appCss from "~/styles/app.css?url";
 import { seo } from "~/utils/seo";
 
@@ -80,7 +80,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <body>
         <div className="p-2 flex gap-2 text-lg">
           <Link
-            to="/{-$locale}"
+            to="/"
             activeProps={{
               className: "font-bold",
             }}
@@ -88,6 +88,26 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           >
             Home
           </Link>
+
+          <Link
+            to="/about"
+            activeProps={{
+              className: "font-bold",
+            }}
+            activeOptions={{ exact: true }}
+          >
+            About
+          </Link>
+
+          {locales.map((locale) => (
+            <button
+              onClick={() => setLocale(locale)}
+              key={locale}
+              className={`px-2 py-1 bg-gray-600 dark:bg-gray-700 rounded-sm text-white uppercase font-extrabold m-2`}
+            >
+              {locale}
+            </button>
+          ))}
         </div>
         <hr />
         {children}

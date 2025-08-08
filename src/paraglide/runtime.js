@@ -44,7 +44,7 @@ export const strategy = [
  */
 export const urlPatterns = [
   {
-    "pattern": "/{-$locale}/about",
+    "pattern": "/about",
     "localized": [
       [
         "en",

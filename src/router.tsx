@@ -61,26 +61,16 @@ function createHistory(opts?: { window?: any }): RouterHistory {
   return createBrowserHistory({
     // window: win,
     parseLocation: () => {
-      console.log("parse", window.location);
-
-      // delocalize
-
-      // window.location.replace(deLocalizeHref(window.location.href));
-
-      console.log("parsed", deLocalizeHref(window.location.href));
-
       return {
-        ...window.location,
+        pathname: deLocalizeHref(window.location.pathname),
+        href: deLocalizeHref(window.location.href),
+        search: window.location.search,
+        hash: window.location.hash,
         state: window.history.state,
-        // hash: window.location.hash,
-        // href: deLocalizeHref(window.location.href),
-        // pathname: deLocalizeHref(window.location.pathname),
       };
     },
     createHref: (href) => {
-      // console.log("href", href);
-
-      return href;
+      return localizeHref(href);
     },
   });
 }
