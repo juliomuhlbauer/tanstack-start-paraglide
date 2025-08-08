@@ -8,12 +8,16 @@ import { paraglideMiddleware } from "./paraglide/server.js";
 import { overwriteGetLocale } from "./paraglide/runtime.js";
 import { router } from "./router";
 
-export default createStartHandler({
+const startHandler = createStartHandler({
   createRouter: () => router,
-})((event) => {
-  return paraglideMiddleware(getWebRequest(), ({ locale, request }) => {
+})(defaultStreamHandler);
+
+export default ({ request }: { request: Request }) => {
+  console.log("Server handler called", new Date());
+  console.log("Request URL:", request.url);
+  return paraglideMiddleware(request, ({ locale, request }) => {
     overwriteGetLocale(() => locale);
 
-    return defaultStreamHandler({ ...event, request });
+    return startHandler({ request });
   });
-});
+};

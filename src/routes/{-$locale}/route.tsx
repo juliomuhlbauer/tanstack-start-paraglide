@@ -8,11 +8,11 @@ import {
 
 export const Route = createFileRoute("/{-$locale}")({
   component: RouteComponent,
-  beforeLoad: ({ params }) => {
-    const locale = assertIsLocale(params.locale);
+  // beforeLoad: ({ params }) => {
+  //   const locale = assertIsLocale(params.locale);
 
-    overwriteGetLocale(() => locale);
-  },
+  //   overwriteGetLocale(() => locale);
+  // },
 });
 
 function RouteComponent() {

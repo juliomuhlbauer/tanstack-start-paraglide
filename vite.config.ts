@@ -19,7 +19,7 @@ export default defineConfig({
           pattern: "/{-$locale}/about",
           localized: [
             ["en", "/en/about"],
-            ["de", "/de/uber"],
+            ["de", "/de/ueber"],
           ],
         },
         {
