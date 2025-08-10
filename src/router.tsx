@@ -21,6 +21,9 @@ function createHistory(): RouterHistory {
       };
     },
     createHref: (href) => {
+      console.log("unparsed", href);
+      console.log("parsed", localizeHref(href));
+
       return localizeHref(href);
     },
   });
