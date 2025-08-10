@@ -9,7 +9,12 @@ import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import * as React from "react";
 import { DefaultCatchBoundary } from "~/components/DefaultCatchBoundary";
 import { NotFound } from "~/components/NotFound";
-import { getLocale, locales, setLocale } from "~/paraglide/runtime.js";
+import {
+  getLocale,
+  locales,
+  localizeHref,
+  setLocale,
+} from "~/paraglide/runtime.js";
 import appCss from "~/styles/app.css?url";
 import { seo } from "~/utils/seo";
 
@@ -97,6 +102,16 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             activeOptions={{ exact: true }}
           >
             About
+          </Link>
+
+          <Link
+            to={localizeHref("/about")}
+            activeProps={{
+              className: "font-bold",
+            }}
+            activeOptions={{ exact: true }}
+          >
+            Custom link about
           </Link>
 
           {locales.map((locale) => (
