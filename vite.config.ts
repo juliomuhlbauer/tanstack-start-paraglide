@@ -3,6 +3,7 @@ import tsConfigPaths from "vite-tsconfig-paths";
 import { paraglideVitePlugin as paraglide } from "@inlang/paraglide-js";
 import { defineConfig } from "vite";
 import viteReact from "@vitejs/plugin-react";
+import { nitro } from "nitro/vite";
 
 export default defineConfig({
   plugins: [
@@ -34,5 +35,8 @@ export default defineConfig({
     }),
     tanstackStart(),
     viteReact(),
+    nitro({
+      target: "vercel",
+    }),
   ],
 });
