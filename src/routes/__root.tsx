@@ -9,12 +9,7 @@ import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import * as React from "react";
 import { DefaultCatchBoundary } from "~/components/DefaultCatchBoundary";
 import { NotFound } from "~/components/NotFound";
-import {
-  getLocale,
-  locales,
-  localizeHref,
-  setLocale,
-} from "~/paraglide/runtime.js";
+import { getLocale, locales, setLocale } from "~/paraglide/runtime.js";
 import appCss from "~/styles/app.css?url";
 import { seo } from "~/utils/seo";
 
