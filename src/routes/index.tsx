@@ -6,8 +6,6 @@ import { getServerMessage } from "~/serverFunctions/get-server-message";
 export const Route = createFileRoute("/")({
   component: Home,
   loader: () => {
-    console.log("loader called", new Date(), getLocale());
-
     return {
       localeFromLoader: getLocale(),
       messageFromLoader: m.example_message({ username: "John Doe" }),

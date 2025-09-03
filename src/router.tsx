@@ -12,20 +12,8 @@ export function createRouter() {
     defaultNotFoundComponent: () => <NotFound />,
     scrollRestoration: true,
     rewrite: {
-      input: ({ url }) => {
-        const delocalizedUrl = deLocalizeUrl(url);
-
-        console.log("rewrite input", url.pathname, delocalizedUrl.pathname);
-
-        return deLocalizeUrl(url);
-      },
-      output: ({ url }) => {
-        const localizedUrl = localizeUrl(url);
-
-        console.log("rewrite output", url.pathname, localizedUrl.pathname);
-
-        return localizedUrl;
-      },
+      input: ({ url }) => deLocalizeUrl(url),
+      output: ({ url }) => localizeUrl(url),
     },
   });
 
