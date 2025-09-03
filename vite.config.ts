@@ -2,6 +2,7 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import tsConfigPaths from "vite-tsconfig-paths";
 import { paraglideVitePlugin as paraglide } from "@inlang/paraglide-js";
 import { defineConfig } from "vite";
+import viteReact from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [
@@ -15,13 +16,6 @@ export default defineConfig({
       cookieName: "PARAGLIDE_LOCALE",
       strategy: ["cookie", "url", "preferredLanguage", "baseLocale"],
       urlPatterns: [
-        // {
-        //   pattern: "/about",
-        //   localized: [
-        //     ["en", "/en/about"],
-        //     ["de", "/de/ueber"],
-        //   ],
-        // },
         {
           pattern: "/about",
           localized: [
@@ -39,5 +33,6 @@ export default defineConfig({
       ],
     }),
     tanstackStart(),
+    viteReact(),
   ],
 });

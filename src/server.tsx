@@ -10,5 +10,8 @@ const startHandler = createStartHandler({
   createRouter,
 })(defaultStreamHandler);
 
-export default ({ request }: { request: Request }) =>
-  paraglideMiddleware(request, ({ request }) => startHandler({ request }));
+export default {
+  fetch(req: Request): Promise<Response> {
+    return paraglideMiddleware(req, ({ request }) => startHandler(request));
+  },
+};

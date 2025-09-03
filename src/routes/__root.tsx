@@ -104,16 +104,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             About
           </Link>
 
-          <Link
-            to={localizeHref("/about")}
-            activeProps={{
-              className: "font-bold",
-            }}
-            activeOptions={{ exact: true }}
-          >
-            Custom link about
-          </Link>
-
           {locales.map((locale) => (
             <button
               onClick={() => setLocale(locale)}
