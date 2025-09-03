@@ -35,8 +35,6 @@ export default defineConfig({
     }),
     tanstackStart(),
     viteReact(),
-    nitro({
-      target: "vercel",
-    }),
+    nitro(),
   ],
 });
