@@ -4,9 +4,11 @@ import { paraglideVitePlugin as paraglide } from "@inlang/paraglide-js";
 import { defineConfig } from "vite";
 import viteReact from "@vitejs/plugin-react";
 import { nitro } from "nitro/vite";
+import { devtools } from "@tanstack/devtools-vite";
 
 export default defineConfig({
   plugins: [
+    devtools(),
     tsConfigPaths({
       projects: ["./tsconfig.json"],
     }),
