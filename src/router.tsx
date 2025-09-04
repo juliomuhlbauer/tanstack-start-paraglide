@@ -12,8 +12,18 @@ export function createRouter() {
     defaultNotFoundComponent: () => <NotFound />,
     scrollRestoration: true,
     rewrite: {
-      input: ({ url }) => deLocalizeUrl(url),
-      output: ({ url }) => localizeUrl(url),
+      input: ({ url }) => {
+        const delocalizedUrl = deLocalizeUrl(url);
+
+        return delocalizedUrl;
+      },
+      output: ({ url }) => {
+        const localizedUrl = localizeUrl(url);
+
+        localizedUrl.pathname = localizedUrl.pathname.replace(/\/+$/, "");
+
+        return localizedUrl;
+      },
     },
   });
 
