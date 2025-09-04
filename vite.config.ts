@@ -33,7 +33,26 @@ export default defineConfig({
         },
       ],
     }),
-    tanstackStart(),
+    tanstackStart({
+      prerender: {
+        enabled: true,
+        crawlLinks: false,
+      },
+      pages: [
+        {
+          path: "/en",
+          prerender: {
+            enabled: true,
+          },
+        },
+        {
+          path: "/de",
+          prerender: {
+            enabled: true,
+          },
+        },
+      ],
+    }),
     viteReact(),
     nitro(),
   ],
