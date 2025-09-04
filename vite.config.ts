@@ -37,6 +37,10 @@ export default defineConfig({
       prerender: {
         enabled: true,
         crawlLinks: false,
+
+        onSuccess: ({ page }) => {
+          console.log(`Prerendered ${page.path}`);
+        },
       },
       pages: [
         {
