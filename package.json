@@ -4,9 +4,9 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "dev": "vite dev",
-    "build": "paraglide-js compile --project ./project.inlang --outdir ./app/paraglide && vite build",
-    "start": "node .output/server/index.mjs",
+    "dev": "bunx --bun vite",
+    "build": "bunx --bun vite build",
+    "start": "bun run --bun --conditions='worker' .output/server/index.mjs",
     "machine-translate": "inlang machine translate --project project.inlang",
     "test:types": "tsc --noEmit"
   },

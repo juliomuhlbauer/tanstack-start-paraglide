@@ -35,6 +35,10 @@ export default defineConfig({
     }),
     tanstackStart(),
     viteReact(),
-    nitro(),
+    nitro({
+      config: {
+        preset: "bun",
+      },
+    }),
   ],
 });
