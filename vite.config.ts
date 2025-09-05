@@ -52,7 +52,7 @@ export default defineConfig({
     viteReact(),
     nitro({
       config: {
-        preset: "bun",
+        preset: process.env.VERCEL === "1" ? "vercel" : "bun",
       },
     }),
   ],
